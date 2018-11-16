@@ -24,10 +24,10 @@ $(document).ready(function() {
     });
 
     $(document).on("click", "button", function() {
-        $("gifs").empty();
+        $("#gifs").empty();
         
         var b = $(this).attr("data-name");
-        var queryURL = "https://api.giphy.com/v1/gifs/random?q=" + b + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + b + "&api_key=dc6zaTOxFJmzC&limit=10";
             
         $.ajax({
             url: queryURL,
@@ -44,8 +44,9 @@ $(document).ready(function() {
                 var p = $("<p>").text("Rating: " + rating);
                 var animalImage = $("<img>");
                 animalImage.attr("src", results[i].images.fixed_height.url);
-                animalImage.attr('data-still', results[i].images.fixed_height_still.url);
-                animalImage.attr('data-animate', results[i].images.fixed_height.url);animalImage.attr('data-state', 'still');
+                animalImage.attr("data-still", results[i].images.fixed_height_still.url);
+                animalImage.attr("data-animate", results[i].images.fixed_height.url);
+                animalImage.attr("data-state", "still");
 
                 gifDiv.append(p);
                 gifDiv.append(animalImage);
